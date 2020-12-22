@@ -1,14 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.find(1)
-  end
-
-  def new
-    
+    @posts = Post.all.order(id: "DESC")
   end
 
   def create
     Post.content(content: params[:content])
-    
+    redirect_to action: :index
   end
 end
